@@ -3,7 +3,8 @@ from utils import load_excel, search_similar
 
 st.set_page_config(page_title="AI Разметка", layout="centered")
 
-st.title("\ud83d\udcca AI помощник для разметки данных")
+st.set_page_config(page_title="Semantic Assistant")
+st.markdown("# AI помощник для разметки данных")
 st.markdown("Загрузите Excel с фразами и тематикой. Введите свой запрос — получите результат по смыслу.")
 
 uploaded_file = st.file_uploader("Загрузите Excel (.xlsx)", type="xlsx")
