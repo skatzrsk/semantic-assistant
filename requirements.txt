@@ -1,6 +1,5 @@
 streamlit
 pandas
-scikit-learn
 openpyxl
-sentence-transformers==2.2.2
-
+sentence-transformers
+requests
