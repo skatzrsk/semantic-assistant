@@ -19,7 +19,7 @@ if uploaded_file:
     if query:
         results = search_similar(df, query)
         if not results.empty:
-            st.markdown("### \ud83d\udd0d Результаты поиска:")
+            st.markdown("### Результаты поиска:")
             for _, row in results.iterrows():
                 st.markdown(f"**Фраза:** {row['phrase']}  \n**Тематики:** {row['topics']}  \n_Сходство: {row['score']:.2f}_")
         else:
