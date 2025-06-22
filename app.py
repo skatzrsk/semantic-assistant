@@ -1,10 +1,3 @@
-├── semantic-search-app/
-│   ├── app.py
-│   ├── utils.py
-│   ├── requirements.txt
-│   ├── README.md
-│   └── .gitignore
-
 # app.py
 import streamlit as st
 from utils import load_all_excels, semantic_search
@@ -28,9 +21,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 GITHUB_CSV_URLS = [
-    "https://raw.githubusercontent.com/skatzrsk/semantic-assistant/main/data1.xlsx",
-    "https://raw.githubusercontent.com/skatzrsk/semantic-assistant/main/data2.xlsx",
-    "https://raw.githubusercontent.com/skatzrsk/semantic-assistant/main/data3.xlsx"
+    "https://raw.githubusercontent.com/USERNAME/REPO/main/data1.xlsx",
+    "https://raw.githubusercontent.com/USERNAME/REPO/main/data2.xlsx",
+    "https://raw.githubusercontent.com/USERNAME/REPO/main/data3.xlsx"
 ]
 
 
@@ -54,45 +47,3 @@ def semantic_search(query, df):
     top_indices = sims.argsort()[-5:][::-1]  # Top 5
     results = [(df.iloc[i]['phrase'], df.iloc[i]['topics'].split(', ')) for i in top_indices if sims[i] > 0.3]
     return results
-
-# requirements.txt
-streamlit
-pandas
-scikit-learn
-openpyxl
-
-# README.md
-# Semantic Search Assistant
-
-AI-powered assistant that semantically matches user queries to labeled phrases and returns associated topics.
-
-## Features
-- Takes user query and matches it to labeled phrases from multiple Excel files
-- Each phrase can have up to 6 associated topics
-- Data files are stored on GitHub and loaded remotely
-
-## How to Run
-1. Clone the repo
-```bash
-git clone https://github.com/YOUR_USERNAME/semantic-search-app.git
-cd semantic-search-app
-```
-2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-3. Run the app
-```bash
-streamlit run app.py
-```
-
-## Excel File Format
-Each Excel file (e.g. data1.xlsx) should have:
-- A column `phrase`
-- Columns `topics1` through `topics6`
-
-# .gitignore
-__pycache__/
-*.pyc
-.env
-.DS_Store
